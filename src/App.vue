@@ -1,18 +1,27 @@
 <template>
   <div id="app">
-    <Users msg="Welcome to Your Vue.js App" />
+    <div id="nav">
+      <router-link to="/"> Home</router-link>
+      <router-link to="/users"> Users </router-link>
+      <router-link to="/users/create"> New</router-link>
+    </div>
+    <router-view :key="$route.path" />
   </div>
 </template>
 
 <script>
-  import Users from "./components/Users.vue";
-  import NewUser from "./components/NewUser.vue";
-
   export default {
-    name: "App",
-    components: {
-      Users,
-      NewUser,
+    mounted() {
+      this.$axios
+        .get(
+          `https://my.api.mockaroo.com/users.json?key=${process.env.VUE_APP_MOCK_PASS}`
+        )
+        .then((results) => {
+          results.data.map((item) => {
+            this.$store.users.list.push(item);
+          });
+        })
+        .catch((err) => console.log(err));
     },
   };
 </script>
@@ -24,6 +33,18 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+  }
+
+  #nav {
+    padding: 30px;
+  }
+
+  #nav a {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+
+  #nav a.router-link-exact-active {
+    color: #42b983;
   }
 </style>
