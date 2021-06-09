@@ -4,14 +4,15 @@ import router from "./router";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import stored from "../storage/store.js";
+import Store from "./Store";
 
-Vue.prototype.$store = stored;
+Vue.prototype.$store = Vue.observable(Store);
 Vue.prototype.$axios = axios;
 
 Vue.config.productionTip = false;
 
 new Vue({
   router,
+
   render: (h) => h(App),
 }).$mount("#app");
