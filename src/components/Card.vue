@@ -65,8 +65,22 @@
     margin: 20px 10px
     padding:10px
     background: #FFFFFF
-    flex-basis: max-content
+
+    -ms-flex: auto
+    width: 259px
     text-align: center
+
+    @media(max-width: 1333px)
+      flex-basis: 33.33%
+
+    @media(max-width: 1073px)
+        flex-basis: 33.33%
+
+    @media(max-width: 815px)
+        flex-basis: 50%
+
+    @media(max-width: 555px)
+        flex-basis: 100%
 
     &__fullname
       font-weight: bold
