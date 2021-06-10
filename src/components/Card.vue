@@ -6,47 +6,75 @@
       </div>
 
       <div class="card__body">
-        <p>
-          {{ data }}
-        </p>
+        <slot name="card_body">
+          <div v-if="isShow">
+            <img :src="data.picture" alt="" />
+            <h3>
+              {{ data.email }}
+            </h3>
+            <h3>
+              {{ data.gender }}
+            </h3>
+            <h3>
+              {{ data.ip_address }}
+            </h3>
+          </div>
+          <div v-else>
+            <h3>
+              {{ data.email }}
+            </h3>
+          </div>
+        </slot>
       </div>
       <div class="card__footer">
-        <slot></slot>
+        <slot name="card_footer"></slot>
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {
-  props: {
-    data: {
-      type: Object,
-      default: function() {
-        return {};
+  export default {
+    props: {
+      data: {
+        type: Object,
+        default: function() {
+          return {};
+        },
       },
     },
-  },
-  computed: {
-    fullname() {
-      return `${this.data.first_name} ${this.data.last_name}`;
+    mounted() {
+      console.log(this.data);
     },
-  },
-};
+    computed: {
+      fullname() {
+        return `${this.data.first_name} ${this.data.last_name}`;
+      },
+      isShow() {
+        return this.$route.name === "UserShow";
+      },
+    },
+  };
 </script>
 <style lang="sass" scoped>
-@import '../assets/sass/variables'
-@import '../assets/sass/modules/mixins'
+  @import '../assets/sass/variables'
+  @import '../assets/sass/modules/mixins'
 
-.card
-  // +border-radius($global_border_radius)
-  +box-shadow(0 10px 20px rgba(0,0,0,.1))
-  margin: 20px 10px
-  background: #FFFFFF
+  .card
+    // +border-radius($global_border_radius)
+    +box-shadow(0 10px 20px rgba(0,0,0,.1))
+    margin: 20px 10px
+    padding:10px
+    background: #FFFFFF
+    flex-basis: max-content
+    text-align: center
 
-  &__header
-    border-bottom: 1px solid #eee
-    padding: 10px 30px
+    &__footer
+      text-align:center
 
-  &__body
-    padding: 10px 30px
+    &__header
+      border-bottom: 1px solid #eee
+      padding: 10px 30px
+
+    &__body
+      padding: 10px 30px
 </style>
