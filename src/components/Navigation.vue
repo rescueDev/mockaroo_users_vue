@@ -19,6 +19,7 @@
 </template>
 <script>
 export default {
+  name: "Navigation",
   props: {
     items: {
       type: Array,
@@ -40,7 +41,6 @@ export default {
 .navigation
   width: 100%
   font-size: 20px
-  padding: 10px 20px
   display: flex
   align-items: center
   justify-content: center
@@ -50,6 +50,8 @@ export default {
 
   &__list
     display: flex
+    margin: 0
+    padding: 0
 
 
     &-item

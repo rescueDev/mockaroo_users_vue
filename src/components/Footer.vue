@@ -1,13 +1,13 @@
 <template>
-  <div class="header">
-    <div class="header__content">
-      <div class="header__content-left">
+  <div class="footer">
+    <div class="footer__content">
+      <div class="footer__content-left">
         <slot name="left"></slot>
       </div>
-      <div class="header__content-center">
+      <div class="footer__content-center">
         <slot></slot>
       </div>
-      <div class="header__content-right">
+      <div class="footer__content-right">
         <slot name="right"></slot>
       </div>
     </div>
@@ -16,19 +16,14 @@
 <style lang="sass" scoped>
 @import '../assets/sass/variables'
 @import '../assets/sass/modules/mixins'
-.header
-  +box-shadow(0 0 30px rgba(0,0,0,.2))
+.footer
   display: block
   background: #FFFFFF
-  position: fixed
-  top: 0
-  left: 0
+  position: relative
   width: 100%
-  height: $header_height
   display: flex
   align-items: stretch
-
-
+  padding-block: 20px
 
   &__content
     display: flex
@@ -41,6 +36,10 @@
     flex: none
 
   &__content-center
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
 
   &__content-right
     flex: none

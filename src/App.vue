@@ -1,29 +1,40 @@
 <template>
   <div class="application">
-    <Navigation :items="$store.navigation.items"></Navigation>
-    <Navigation :mini="mini" :items="$store.navigation.items"></Navigation>
-    <div>
-      <!-- <transition name="fade" mode="out-in"> -->
-      <div v-if="loading">
-        carica
-      </div>
+    <Header>
+      <template #left><Logo></Logo></template>
+      <Navigation :items="$store.navigation.header"></Navigation>
+      <template #right>Hello!</template>
+    </Header>
+
+    <transition name="page" mode="out-in">
+      <div v-if="loading">Carica</div>
       <router-view v-else :key="$route.path" />
-      <!-- </transition> -->
-    </div>
+    </transition>
+
+    <Footer>
+      <Logo mini></Logo>
+      <div class="margin-bottom-10"></div>
+      <Navigation mini :items="$store.navigation.footer"></Navigation>
+    </Footer>
   </div>
 </template>
 
 <script>
 import Navigation from "./components/Navigation";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Logo from "./components/Logo";
 export default {
   name: "App",
   components: {
     Navigation,
+    Header,
+    Footer,
+    Logo,
   },
   data() {
     return {
       loading: true,
-      mini: false,
     };
   },
   mounted() {

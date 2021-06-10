@@ -1,18 +1,16 @@
 <template>
-  <div class="home">
-    <div class="user" v-for="user in userList" :key="user.id">
-      <h3 class="">
-        {{ user.first_name }}
-      </h3>
-    </div>
+  <div class="section section--home">
+    <Card v-for="user in userList" :key="user.id" :data="user"></Card>
   </div>
 </template>
 
 <script>
+import Card from "../components/Card";
+
 export default {
   name: "Home",
-  mounted() {
-    // this.users = this.$store.users.list;
+  components: {
+    Card,
   },
   data() {
     return {};

@@ -1,7 +1,7 @@
 const Store = {
   debug: true,
   navigation: {
-    items: [
+    header: [
       {
         link: "/",
         label: "Home",
@@ -13,6 +13,20 @@ const Store = {
       {
         link: "/users/create",
         label: "New",
+      },
+    ],
+    footer: [
+      {
+        link: "/",
+        label: "Privacy Policy",
+      },
+      {
+        link: "/",
+        label: "Coockie Policy",
+      },
+      {
+        link: "/",
+        label: "Contact",
       },
     ],
   },
