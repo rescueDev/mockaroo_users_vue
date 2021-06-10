@@ -68,6 +68,9 @@
     flex-basis: max-content
     text-align: center
 
+    &__fullname
+      font-weight: bold
+
     &__footer
       text-align:center
 

@@ -39,7 +39,7 @@
     },
     mounted() {
       this.$axios
-        .get(`/users.json`)
+        .get(`/users-1.json`)
         .then(async (results) => {
           results.data.map((user) => {
             this.$store.users.list.push(user);
