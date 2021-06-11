@@ -4,7 +4,6 @@ import Home from "../views/Index.vue";
 import UsersIndex from "../views/Users/Index.vue";
 import UsersCreate from "../views/Users/Create.vue";
 import UserShow from "../views/Users/Show.vue";
-import Example from "../views/Example.vue";
 
 Vue.use(VueRouter);
 
@@ -29,11 +28,6 @@ const routes = [
     path: "/users/user/:id",
     name: "UserShow",
     component: UserShow,
-  },
-  {
-    path: "/example",
-    name: "Example",
-    component: Example,
   },
 ];
 
