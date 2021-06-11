@@ -7,22 +7,16 @@
 
       <div class="card__body">
         <slot name="body">
-          <img :src="picture" alt="" />
-
-          <p>
+          <img class="card__avatar" :src="picture" alt="" />
+          <p v-if="data.email">
             {{ data.email }}
           </p>
-          <p>
+          <p v-if="data.gender">
             {{ data.gender }}
           </p>
-          <p>
+          <p v-if="data.ip_address">
             {{ data.ip_address }}
           </p>
-          <div>
-            <h3>
-              {{ data.email }}
-            </h3>
-          </div>
         </slot>
       </div>
       <div class="card__footer">
@@ -41,9 +35,7 @@
         },
       },
     },
-    mounted() {
-      console.log(this.data);
-    },
+    mounted() {},
     computed: {
       fullname() {
         return `${this.data.first_name} ${this.data.last_name}`;
@@ -86,6 +78,11 @@
     &__body
       width: 80%
       margin: auto
+
+    &__avatar
+      border-radius: 50%
+      border: 0.8px solid slategray
+      margin: 10px 0px
 
     &__content
       flex: 0 1 100%
