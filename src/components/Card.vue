@@ -7,18 +7,17 @@
 
       <div class="card__body">
         <slot name="body">
-          <div>
-            <img :src="picture" alt="" />
-            <p>
-              {{ data.email }}
-            </p>
-            <p>
-              {{ data.gender }}
-            </p>
-            <p>
-              {{ data.ip_address }}
-            </p>
-          </div>
+          <img :src="picture" alt="" />
+
+          <p>
+            {{ data.email }}
+          </p>
+          <p>
+            {{ data.gender }}
+          </p>
+          <p>
+            {{ data.ip_address }}
+          </p>
           <div>
             <h3>
               {{ data.email }}
@@ -60,17 +59,20 @@
   @import '../assets/sass/modules/mixins'
 
   .card
-    // +border-radius($global_border_radius)
+    +border-radius($global_border_radius)
     +box-shadow(0 10px 20px rgba(0,0,0,.1))
     margin: $margin_card_grid
     flex: 0 1 24%
+    width: 100%
     padding: 10px
     background: #FFFFFF
     text-align: center
 
-    @media(max-width: 1200px)
-      flex-basis: 25%
+    @media(max-width: 1440px)
+      flex-basis: 20%
 
+    @media(max-width: 1200px)
+      flex-basis: 30%
 
     @media(max-width: 992px)
       flex-basis: 45%
@@ -81,6 +83,9 @@
     @media(max-width: 576px)
       flex-basis: 100%
 
+    &__body
+      width: 80%
+      margin: auto
 
     &__content
       flex: 0 1 100%
@@ -93,8 +98,5 @@
 
     &__header
       border-bottom: 1px solid #eee
-      padding: 10px 30px
-
-    &__body
       padding: 10px 30px
 </style>
