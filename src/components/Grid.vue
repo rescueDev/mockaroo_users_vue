@@ -1,6 +1,6 @@
 <template>
-  <div class="grid--container">
-    <slot name="cards"></slot>
+  <div class="grid grid--container">
+    <slot></slot>
   </div>
 </template>
 
@@ -8,7 +8,6 @@
   .grid--container
       display: flex
       width: 100%
-      justify-content: space-around
+      justify-content: space-between
       flex-wrap: wrap
-      flex-basis: auto
 </style>

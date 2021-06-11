@@ -1,16 +1,14 @@
 <template>
   <div class="section section--home">
     <Grid>
-      <template #cards>
-        <Card v-for="user in userList" :key="user.id" :data="user">
-          <template #card_body></template>
-          <template #card_footer>
-            <button class="card__button__footer" @click="showUser(user)">
-              Show
-            </button>
-          </template>
-        </Card>
-      </template>
+      <Card v-for="user in userList" :key="user.id" :data="user">
+        <template #body></template>
+        <template #footer>
+          <button class="button" @click="showUser(user)">
+            Show
+          </button>
+        </template>
+      </Card>
     </Grid>
   </div>
 </template>
@@ -30,7 +28,6 @@
     },
     methods: {
       showUser: function(user) {
-        console.log("button clicked", user);
         this.$router.push(`/users/user/${user.id}`);
       },
     },
@@ -45,10 +42,4 @@
 <style lang="sass" scoped>
   @import '../assets/sass/variables'
   @import '../assets/sass/modules/mixins'
-
-  .card__button__footer
-    background-color: $showButtonColors
-    padding: 0.6rem
-    +button_border_radius
-    color: #FFFF
 </style>

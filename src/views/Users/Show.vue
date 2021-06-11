@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Card :data="user"></Card>
+    <Card v-if="user" :data="user"></Card>
+    <!-- v else component not found or 404 -->
   </div>
 </template>
 
@@ -16,23 +17,21 @@
       },
     },
     data() {
-      return {
-        user: {},
-      };
+      return {};
     },
     components: {
       Card,
     },
-    mounted() {
-      this.$axios
-        .get(`/users-1.json`)
-        .then((users) => {
-          const userToShow = users.data.find((user) => {
-            return user.id == this.$route.params.id;
-          });
-          this.user = userToShow;
-        })
-        .catch((err) => console.log(err));
+    computed: {
+      user() {
+        return (
+          this.$store.users.list
+            .filter((user) => {
+              return user.id == this.$route.params.id;
+            })
+            .pop() || null
+        );
+      },
     },
   };
 </script>

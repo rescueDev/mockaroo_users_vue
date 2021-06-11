@@ -6,20 +6,20 @@
       </div>
 
       <div class="card__body">
-        <slot name="card_body">
-          <div v-if="isShow">
-            <img :src="data.picture" alt="" />
-            <h3>
+        <slot name="body">
+          <div>
+            <img :src="picture" alt="" />
+            <p>
               {{ data.email }}
-            </h3>
-            <h3>
+            </p>
+            <p>
               {{ data.gender }}
-            </h3>
-            <h3>
+            </p>
+            <p>
               {{ data.ip_address }}
-            </h3>
+            </p>
           </div>
-          <div v-else>
+          <div>
             <h3>
               {{ data.email }}
             </h3>
@@ -27,7 +27,7 @@
         </slot>
       </div>
       <div class="card__footer">
-        <slot name="card_footer"></slot>
+        <slot name="footer"></slot>
       </div>
     </div>
   </div>
@@ -49,8 +49,8 @@
       fullname() {
         return `${this.data.first_name} ${this.data.last_name}`;
       },
-      isShow() {
-        return this.$route.name === "UserShow";
+      picture() {
+        return this.data.picture || "https://via.placeholder.com/150x150";
       },
     },
   };
@@ -62,25 +62,28 @@
   .card
     // +border-radius($global_border_radius)
     +box-shadow(0 10px 20px rgba(0,0,0,.1))
-    margin: 20px 10px
-    padding:10px
+    margin: $margin_card_grid
+    flex: 0 1 24%
+    padding: 10px
     background: #FFFFFF
-
-    -ms-flex: auto
-    width: 259px
     text-align: center
 
-    @media(max-width: 1333px)
-      flex-basis: 33.33%
+    @media(max-width: 1200px)
+      flex-basis: 25%
 
-    @media(max-width: 1073px)
-        flex-basis: 33.33%
 
-    @media(max-width: 815px)
-        flex-basis: 50%
+    @media(max-width: 992px)
+      flex-basis: 45%
 
-    @media(max-width: 555px)
-        flex-basis: 100%
+    @media(max-width: 768px)
+      flex-basis: calc(50% - $margin_card_grid)
+
+    @media(max-width: 576px)
+      flex-basis: 100%
+
+
+    &__content
+      flex: 0 1 100%
 
     &__fullname
       font-weight: bold

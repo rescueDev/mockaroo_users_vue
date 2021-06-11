@@ -5,11 +5,11 @@
       <form @submit.prevent="addUser">
         <div>
           <label for="firstname">First Name</label>
-          <input type="text" id="firstname" v-model="newUser.firstname" />
+          <input type="text" id="firstname" v-model="newUser.first_name" />
         </div>
         <div>
           <label for="firstname">Last Name</label>
-          <input type="text" id="lastname" v-model="newUser.lastname" />
+          <input type="text" id="lastname" v-model="newUser.last_name" />
         </div>
         <div>
           <label for="gender">Gender</label>
@@ -26,29 +26,30 @@
 </template>
 
 <script>
-  import axios from "axios";
-
   export default {
     data() {
       return {
         newUser: {
-          firstname: "",
-          lastname: "",
+          first_name: "",
+          last_name: "",
           gender: "",
           email: "",
+          id: null,
         },
       };
     },
     methods: {
       addUser() {
-        console.log(this.newUser);
-        axios
-          .post(
-            `https://my.api.mockaroo.com/user.json?key=${process.env.VUE_APP_MOCK_PASS}`,
-            this.newUser
-          )
-          .then((res) => console.log(res))
-          .catch((err) => console.log(err));
+        this.newUser.id = this.$store.users.list.length + 1;
+        this.$store.users.list.push(this.newUser);
+        this.$router.push(`/users/user/${this.newUser.id}`);
+        // this.$axios
+        //   .post(
+        //     `https://my.api.mockaroo.com/user.json?key=${process.env.VUE_APP_MOCK_PASS}`,
+        //     this.newUser
+        //   )
+        //   .then((res) => console.log(res))
+        //   .catch((err) => console.log(err));
       },
     },
   };
