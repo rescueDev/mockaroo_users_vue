@@ -42,4 +42,12 @@
 <style lang="sass" scoped>
   @import '../assets/sass/variables'
   @import '../assets/sass/modules/mixins'
+
+  .button
+    margin: 10px
+    border: none
+    border-radius: 8px
+    background-color: #CCCCCC
+    color: white
+    padding: 8px
 </style>
