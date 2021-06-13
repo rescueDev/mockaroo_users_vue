@@ -46,7 +46,7 @@
   .button
     margin: 10px
     border: none
-    border-radius: 8px
+    +border-radius(8px)
     background-color: #CCCCCC
     color: white
     padding: 8px

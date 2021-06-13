@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Users list</h1>
     <div>
       <div class="user" v-for="user in userList" :key="user.id">
         <h3 class="">
